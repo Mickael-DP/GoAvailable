@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer |
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	{% for flashError in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+	{% endfor %}
+
+	<div class="container">
+		<div class="row">
+			<div class="card col-10 col-md-6 col-lg-4 position-absolute top-50 start-50 translate-middle card-form ">
+				<div class="card-header card-header-bg">
+					<h2 class="text-center">Supprimer mon compte</h2>
+				</div>
+				<div class="card-body">
+					{{ form_start(DeleteForm) }}
+					<div class="d-flex flex-column align-items-center">
+					<div class="col-10">
+						{{ form_row(DeleteForm.email) }}
+					</div>
+					<div class="col-10">
+						{{ form_row(DeleteForm.password) }}
+					</div>
+						<button type="submit" class="btn btn-danger mt-2">Supprimer mon compte</button>
+					</div>
+					{{ form_end(DeleteForm) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,132 @@
+/*-----------------------
+-----Toute les pages-----
+-----------------------*/
+*{
+    color: white;
+}
+
+input, textarea{
+    color:black;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+  
+#content-wrap {
+    padding-bottom: 4.5rem;    /* Footer height */
+}
+
+#fond {
+    background-color: #2B3E50;
+}
+
+    /*---Navbar---*/
+
+.color-nav{
+    background-color: #697887;
+}
+
+    /*---Footer---*/
+
+.color-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3.5rem; 
+    background-color: #697887;
+}
+
+/*-----------------------
+-----Page d'accueil-----
+-----------------------*/
+
+.mess-bienvenue{
+    padding-top: 5em;
+}
+
+
+/*-----------------------
+---Page d'inscription----
+-----------------------*/
+
+#pp-default {
+    width: 180px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.card-form{
+    background-color: #697887;
+}
+
+.card-header-bg{
+    background-color: #697887;
+}
+
+.bg-btn{
+    background-color: #C4C4C4;
+}
+
+.agree-txt{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.error-custom {
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: bold;
+    color: #FF0000;
+}
+
+/*-----------------------
+---Page de connexion----
+-----------------------*/
+.reset-mdp {
+    margin-top: 5px;
+    color:rgb(255, 255, 255);
+}
+
+.reset-mdp:hover{
+    color: black;
+}
+
+/*-----------------------
+-----Page de profil------
+-----------------------*/
+
+.pp-profil{
+    width: 150px;
+}
+
+.info-profil{
+    margin-top: 20%;
+}
+
+/*-----------------------
+--Page de modif profil--
+-----------------------*/
+#pp-actuel{
+    width: 150px;
+}
+
+/*-----------------------
+--Page du creation club--
+-----------------------*/
+
+#logo-default{
+    width: 180px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/*-----------------------
+-----Page du club------
+-----------------------*/
+
+.logo{
+    width: 180px;
+}

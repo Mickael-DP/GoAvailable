@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creer mon club |
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+$('#club_form_clubPicture_imageFile_file').on('change', function () {
+filePreview(this);
+});
+});
+
+function filePreview(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function (e) {
+$('#logo-default').attr('src', e.target.result);
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+	</script>
+
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="card col-10 col-md-6 col-lg-4  mx-auto card-form mt-5 ">
+				<div class="card-header card-header-bg">
+					<h1 class="text-center">Créer son club</h1>
+				</div>
+                    {{ form_start(clubform) }}
+				<div class="card-body d-flex flex-column align-items-center">
+					
+					<div class="col-10">
+						{{ form_row(clubform.name) }}
+					</div>
+					<div class="col-10">
+						{{ form_row(clubform.dateFondationClub) }}
+					</div>
+					<div class="col-10">
+						{{ form_row(clubform.siteDeCompet) }}
+					</div>
+					<div class="col-10">
+						{{ form_row(clubform.reseauxSocial) }}
+					</div>
+					<div>
+						<img id="logo-default" src="/images/club_picture/logo-default.png" alt="">
+						<label for="club_form_clubPicture_imageFile_file" class='btn btn-sm bg-btn'>Logo du club</label>
+						{{ form_widget(clubform.clubPicture) }}
+					</div>
+					<button type="submit" class="btn  bg-btn">Créer mon club</button>
+					{{ form_end(clubform) }}
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

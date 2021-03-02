@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil |
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<h1 class="text-center fw-bold mt-2">Mon Profil</h1>
+			<div class="d-flex flex-wrap offset-4 offset-md-2 col-6 col-md-10 col-lg-10">
+				<div class="d-flex flex-column ">
+					<img class="pp-profil" src=" {{ asset('images/profil_picture/') }}{% if app.user.profilPicture != null  %}{{ app.user.profilPicture.imageName }}{% else %}pp-default.png {% endif %}" alt="">
+					<div>
+					<a type='button' class='btn btn-sm btn-secondary mt-2' href=" {{ path('editprofil') }} ">Modifier mon profil</a>
+					</div>
+					<div>
+					<a type='button' class='btn btn-sm btn-danger mt-1' href=" {{ path('deleteUser') }} ">Supprimer mon compte</a>
+					</div>
+				</div>
+				<div class="offset-lg-2 offset-md-3 info-profil">
+					<h5 class="text-uppercase fw-bold mb-2">Information du profil:</h5>
+					<div class="m-1">
+						<strong>Pseudo:</strong><em> {{ app.user.pseudo }}</em>
+					</div>
+					<div class="m-1">
+						<strong>PSN:</strong><em> {{ app.user.psn }}</em>
+					</div>
+					<div class="m-1">
+						<strong>Gamertag:</strong><em> {{ app.user.gamertag }}</em>
+					</div>
+					<div class="m-1">
+						<strong>Origin:</strong><em> {{ app.user.origin }}</em>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

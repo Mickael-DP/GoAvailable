@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription |
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+
+	<script type="text/javascript"> 
+		$(document).ready(function () { 
+$('#registration_form_profilPicture_imageFile_file').on('change', function () { /* Nous allons chercher l'id au moment ou la value de l'input change */
+filePreview(this); /* this = l'input */
+});
+});
+
+function filePreview(input) {
+if (input.files && input.files[0]) { /*l'input de type de fichier donc il verifie si le fichier existe donc emplacement 0 */
+var reader = new FileReader(); /*On créé une variable qui va lire le fichier */
+reader.onload = function (e) { /*lorsque le fichier est chargé il va faire une fonction */
+$('#pp-default').attr('src', e.target.result); /*On va changé la valeur de source la ou il y a la balise image avec l'id correspondant */
+}
+reader.readAsDataURL(input.files[0]); /*Lu comme une URL*/
+}
+}
+	</script>
+
+{% endblock %}
+
+{% block body %}
+	{% for flashError in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+	{% endfor %}
+
+	<div class="container">
+		<div class="row">
+			<div class="card col-10 col-md-6 col-lg-4 mx-auto mt-4 card-form ">
+				<div class="card-header card-header-bg">
+					<h1 class="text-center">Inscription</h1>
+				</div>
+				<div class="card-body">
+					{{ form_start(registrationForm) }}
+
+					<div class="d-flex flex-column align-items-center">
+						<p>Les champs marqués d'un <span class="text-danger">*</span> sont obligatoire</p>
+					<div class="col-10">
+						<label for="registration_form_email">Email: <span class="text-danger">*</span></label>
+						{{ form_widget(registrationForm.email) }}
+					</div>
+					<div class="col-10">
+						<label for="registration_form_pseudo">Pseudo: <span class="text-danger">*</span></label>
+						{{ form_widget(registrationForm.pseudo) }}
+					</div>
+					<div class="col-10">
+						<label for="registration_form_password">Mot de passe: <span class="text-danger">*</span></label>
+						{{ form_widget(registrationForm.password) }}
+						<div class="error-custom">
+							{{ form_errors(registrationForm.password) }}
+						</div>
+					</div>
+					<div class="col-10">
+						{{ form_row(registrationForm.psn) }}
+					</div>
+					<div class="col-10">
+						{{ form_row(registrationForm.gamertag) }}
+					</div>
+					<div class="col-10">
+						{{ form_row(registrationForm.origin) }}
+					</div>
+						<img id="pp-default" src="images/profil_picture/pp-default.png" alt="">
+						<label for="registration_form_profilPicture_imageFile_file" class="btn bg-btn">Ajoutez Photo</label>
+						{{ form_widget(registrationForm.profilPicture) }}
+						<label class="agree-txt" for="registration_form_agreeTerms">{{ form_widget(registrationForm.agreeTerms) }}
+							Je reconnais avoir pris connaissance des 
+							conditions d’utilisation et y adhère totalement <span class="text-danger">*</span></label>
+						<button type="submit" class="btn bg-btn">Je m'inscris</button>
+					</div>
+					{{ form_end(registrationForm) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

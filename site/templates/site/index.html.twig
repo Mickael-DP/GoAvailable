@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Accueil | {{ parent() }}{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+            <div class="col-8 mx-auto text-light mess-bienvenue">
+            <h1 class="text-center display-1"><strong>BIENVENUE</strong></h1>
+			<p>Fini les disponibilité sur des outils qui ne sont pas adaptés. <br>
+            Voici le site de gestion de disponibilité qui vous facilitera votre organisation, 
+            celle du manager ainsi que celle de votre coéquipier. Ne perdez plus de temps, inscrivez-vous ! </p>
+            </div>
+            
+		</div>
+        
+        <div class="row">
+            <div class="d-flex justify-content-center">
+            {% if app.user == null %}
+                <a type="button" class="btn btn-secondary m-1" href= "{{ path('inscription') }}">Inscription</a>
+                <a type="button" class="btn btn-secondary m-1" href="{{ path('connexion') }}">Connexion</a>
+            {% else %}
+                <a type="button" class="btn btn-secondary m-1" href="{{ path('monprofil') }}">Mon Profil</a>
+            {% endif %}
+            </div>
+        </div>
+    </div> 
+{% endblock %}
+
+
+
+
+
+
+
+
+

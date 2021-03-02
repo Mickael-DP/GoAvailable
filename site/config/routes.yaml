@@ -1,0 +1,31 @@
+accueil:
+  path: /
+  controller: App\Controller\SiteController::index
+
+connexion:
+  path: /connexion
+  controller: App\Controller\SecurityController::login
+
+inscription:
+  path: /inscription
+  controller: App\Controller\RegistrationController::register
+
+monprofil:
+  path: /users/monprofil
+  controller: App\Controller\UsersController::monprofil
+
+editprofil:
+  path: /users/monprofil/edit
+  controller: App\Controller\UsersController::editprofil
+
+deleteUser:
+  path: /users/monprofil/delete
+  controller: App\Controller\UsersController::deleterUser
+
+createclub:
+  path: /users/createclub
+  controller: App\Controller\ClubController::createclub
+
+monclub:
+  path: /users/monclub
+  controller: App\Controller\ClubController::monclub

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Club |
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container">
+		<div class="row">
+			<h1 class="text-center fw-bold mt-2 mb-4">Mon Club</h1>
+			<div class="d-flex flex-wrap  offset-3 offset-md-2 col-6">
+				<div class="d-flex flex-column">
+					<img class="logo" src=" {{ asset('images/club_picture/') }}{{ monclub.clubPicture.imageName }}" alt="">
+				</div>
+				<div class="offset-md-5 mt-3">
+				<h5 class="text-uppercase fw-bold">Information du club:</h5>
+					<div class="m-1">
+						<strong>Nom:</strong><em> {{ monclub.name }}</em>
+					</div>
+					<div class="m-1">
+						<strong>Date de fondation:</strong><em> {{ monclub.dateFondationClub|date("d/m/Y") }}</em>
+					</div>
+					<div class="m-1">
+						<strong>Site de commpétition:</strong><em> {{ monclub.siteDeCompet }}</em>
+					</div>
+                    <div class="m-1">
+						<strong>Réseau social:</strong><em> {{ monclub.reseauxSocial }}</em>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

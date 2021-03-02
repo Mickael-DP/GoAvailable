@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Mon Profil | {{ parent() }}{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+		$(document).ready(function () {
+$('#edit_profile_profilPicture_imageFile_file').on('change', function () {
+filePreview(this);
+});
+});
+
+function filePreview(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function (e) {
+$('#pp-actuel').attr('src', e.target.result);
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+	</script>
+
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="card col-10 col-md-6 col-lg-4 mx-auto mt-4 card-form ">
+                <div class="card-header card-header-bg">
+                    <h1 class="text-center">Modifier votre profil</h1>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="col-10">
+                            {{ form_row(form.pseudo) }}
+                        </div>
+                        <div class="col-10">
+                            {{ form_row(form.psn) }}
+                        </div>
+                        <div class="col-10">
+                            {{ form_row(form.gamertag) }}
+                        </div>
+                        <div class="col-10">
+                            {{ form_row(form.origin) }}
+                        </div>
+                        <div class="col-10">
+                            <img id="pp-actuel" src=" {{ asset('images/profil_picture/') }}{% if app.user.profilPicture != null  %}{{ app.user.profilPicture.imageName }}{% else %}pp-default.png {% endif %}" alt="">
+                            <label for="edit_profile_profilPicture_imageFile_file" class="btn btn-secondary">Modifier Photo</label>
+                            {{ form_widget(form.profilPicture) }}
+                        </div>
+                        <button type="submit" class="btn bg-btn mt-3">Modifier</button>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
